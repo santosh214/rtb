@@ -14,12 +14,12 @@ export const MenuList = [
     {
         id: '124',
         name: 'Items',
-        route: 'items'
+        route: '/dashboard/items'
     },
     {
         id: '125',
         name: 'Transaction',
-        route: 'transaction'
+        route: '/dashboard/transaction'
     },
 
 
