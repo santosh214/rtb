@@ -20,6 +20,7 @@ import { MenuList } from '../../utils/constant';
 import Users from '../../pages/Admin/users/Users';
 import Items from '../../pages/Admin/Items/Items';
 import Transactions from '../../pages/Admin/Transaction/Transactions';
+import AddUser from '../../pages/Admin/users/AddUser';
 
 const drawerWidth = 240;
 
@@ -97,6 +98,7 @@ export default function Sidebar() {
                         <Route path="/dashboard/items" element={<Items />} />
                         <Route path="/dashboard/users" element={<Users />} />
                         <Route path="/dashboard/transactions" element={<Transactions />} />
+                        <Route path="/dashboard/users/add" element={<AddUser />} />
                     </Routes>
                 </Box>
             </Box>

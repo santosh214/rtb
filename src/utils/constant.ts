@@ -17,6 +17,11 @@ export const MenuList = [
         route: '/dashboard/users'
     },
     {
+        id: '123',
+        name: 'Add User',
+        route: '/dashboard/users/add'
+    },
+    {
         id: '124',
         name: 'Items',
         route: '/dashboard/items'
