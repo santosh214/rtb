@@ -15,10 +15,11 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Home from '../../pages/Home';
-import Items from '../../pages/Items';
 import Navbar from './Navbar';
 import { MenuList } from '../../utils/constant';
 import Users from '../../pages/Admin/users/Users';
+import Items from '../../pages/Admin/Items/Items';
+import Transactions from '../../pages/Admin/Transaction/Transactions';
 
 const drawerWidth = 240;
 
@@ -92,11 +93,10 @@ export default function Sidebar() {
                 >
                     {/* <Toolbar /> */}
                     <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/items" element={<Items />} />
+                        <Route path="/dashboard" element={<Home />} />
+                        <Route path="/dashboard/items" element={<Items />} />
                         <Route path="/dashboard/users" element={<Users />} />
-
-
+                        <Route path="/dashboard/transactions" element={<Transactions />} />
                     </Routes>
                 </Box>
             </Box>

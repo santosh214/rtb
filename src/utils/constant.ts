@@ -7,6 +7,11 @@ export const elementSpacing = { xs: 0.5, sm: 1, md: 1, lg: 2, xl: 3 };
 
 export const MenuList = [
     {
+        id: '122',
+        name: 'Home',
+        route: '/dashboard'
+    },
+    {
         id: '123',
         name: 'Users',
         route: '/dashboard/users'
@@ -19,7 +24,7 @@ export const MenuList = [
     {
         id: '125',
         name: 'Transaction',
-        route: '/dashboard/transaction'
+        route: '/dashboard/transactions'
     },
 
 
