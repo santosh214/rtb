@@ -1,10 +1,13 @@
-import { Box, TextField } from '@mui/material'
+import { Box, TextField, Button, Card, CardHeader, Typography } from '@mui/material'
 import { useForm, SubmitHandler } from "react-hook-form"
+import { elementSpacing, sectionSpacing } from './../../../utils/constant';
 
 type Inputs = {
-    example: string
-    exampleRequired: string
+    name: string
+    email: string
+    id: string
 }
+
 export default function AddUser() {
     const {
         register,
@@ -14,23 +17,47 @@ export default function AddUser() {
     } = useForm<Inputs>()
     const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
 
-    console.log(watch("example")) // watch input valu
-    const AddUser = () => {
-        console.log('h')
-    }
     return (
-        <Box>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                {/* register your input into the hook by invoking the "register" function */}
-                <input defaultValue="test" {...register("example")} />
+        <Box justifyContent={'center'} display={'flex'}>
+            <Box width={700}>
+                <Card sx={{ p: elementSpacing }}>
+                    <Typography variant='h4' >Add User</Typography>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <TextField
+                            label="ID"
+                            type="text"
+                            {...register("id", { required: "ID is required" })}
+                            error={!!errors.id}
+                            helperText={errors.id ? errors.id.message : ""}
+                            fullWidth
+                            margin="normal"
+                        />
+                        <TextField
+                            label="Name"
+                            {...register("name", { required: "Name is required" })}
+                            error={!!errors.name}
+                            helperText={errors.name ? errors.name.message : ""}
+                            fullWidth
+                            margin="normal"
+                        />
+                        <TextField
+                            label="Email"
+                            type="email"
+                            {...register("email", { required: "Email is required" })}
+                            error={!!errors.email}
+                            helperText={errors.email ? errors.email.message : ""}
+                            fullWidth
+                            margin="normal"
+                        />
 
-                {/* include validation with required or other standard HTML validation rules */}
-                <input {...register("exampleRequired", { required: true })} />
-                {/* errors will return when field validation fails  */}
-                {errors.exampleRequired && <span>This field is required</span>}
+                        <Button type="submit" variant="contained" color="primary" sx={{mt:elementSpacing}}>
+                            Submit
+                        </Button>
+                    </form>
+                </Card>
 
-                <input type="submit" />
-            </form>
+            </Box>
         </Box>
+
     )
 }
