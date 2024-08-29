@@ -11,51 +11,47 @@ import {
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useNavigate } from 'react-router-dom';
 
 interface DataRow {
-    id: number;
-    name: string;
-    age: number;
+    [key: string]: any; // Allow any key-value pair
+}
+
+interface Column {
+    id: string;
+    label: string;
+    isActionColumn?: boolean;
 }
 
 interface TableWithRowActionsProps {
     data: DataRow[];
+    columns: Column[];
+    onEdit?: (id: number) => void;
+    onDelete?: (id: number) => void;
 }
 
-const UITable: React.FC<TableWithRowActionsProps> = ({ data }) => {
-    const handleEdit = (id: number): void => {
-        console.log(`Edit item ${id}`);
-        // Add your edit logic here
-    };
-
-    const handleDelete = (id: number): void => {
-        console.log(`Delete item ${id}`);
-        // Add your delete logic here
-    };
-
+const UITable: React.FC<TableWithRowActionsProps> = ({ data, columns, onEdit, onDelete }) => {
+    const navigate = useNavigate()
+    const handleRow = (id: number) => {
+        navigate(`/dashboard/user/${id}`)
+    }
     return (
         <TableContainer component={Paper}>
             <Table>
                 <TableHead>
                     <TableRow>
-                        <TableCell>Name</TableCell>
-                        <TableCell>Age</TableCell>
-                        <TableCell>Actions</TableCell>
+                        {columns.map((col) => (
+                            <TableCell key={col.id}>{col.label}</TableCell>
+                        ))}
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {data.map((row: DataRow) => (
-                        <TableRow key={row.id}>
-                            <TableCell>{row.name}</TableCell>
-                            <TableCell>{row.age}</TableCell>
-                            <TableCell>
-                                <IconButton onClick={() => handleEdit(row.id)}>
-                                    <EditIcon />
-                                </IconButton>
-                                <IconButton onClick={() => handleDelete(row.id)}>
-                                    <DeleteIcon />
-                                </IconButton>
-                            </TableCell>
+                        <TableRow key={row.id} hover onClick={() => handleRow(row.id)} sx={{ cursor: 'pointer' }} >
+                            {columns.map((col) => (
+                                <TableCell key={col.id}>{row[col.id]}</TableCell>
+                            ))}
+
                         </TableRow>
                     ))}
                 </TableBody>
@@ -65,4 +61,4 @@ const UITable: React.FC<TableWithRowActionsProps> = ({ data }) => {
 };
 
 export { UITable };
-export type { DataRow };
+export type { DataRow, Column };

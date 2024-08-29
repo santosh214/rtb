@@ -1,14 +1,13 @@
 import { Box, TextField, Button, Card, Typography } from '@mui/material'
 import { useForm, SubmitHandler } from "react-hook-form"
-import { boxShadow, elementSpacing, formWidth } from './../../../utils/constant';
+import { boxShadow, elementSpacing, formWidth } from '../../utils/constant'
 
 type Inputs = {
-    name: string
     email: string
-    id: string
+    password: string
 }
 
-export default function AddUser() {
+export default function Login() {
     const {
         register,
         handleSubmit,
@@ -23,31 +22,24 @@ export default function AddUser() {
         <Box justifyContent={'center'} display={'flex'}>
             <Box width={formWidth}>
                 <Card sx={{ p: elementSpacing, ...boxShadow }} >
-                    <Typography variant='h4' >Add User</Typography>
+                    <Typography variant='h4' >Login</Typography>
                     <form onSubmit={handleSubmit(onSubmit)}>
+
+
                         <TextField
-                            label="ID"
-                            type="text"
-                            {...register("id", { required: "ID is required" })}
-                            error={!!errors.id}
-                            helperText={errors.id ? errors.id.message : ""}
-                            fullWidth
-                            margin="normal"
-                        />
-                        <TextField
-                            label="Name"
-                            {...register("name", { required: "Name is required" })}
-                            error={!!errors.name}
-                            helperText={errors.name ? errors.name.message : ""}
-                            fullWidth
-                            margin="normal"
-                        />
-                        <TextField
-                            label="Email"
+                            label="Enter your email"
                             type="email"
                             {...register("email", { required: "Email is required" })}
                             error={!!errors.email}
                             helperText={errors.email ? errors.email.message : ""}
+                            fullWidth
+                            margin="normal"
+                        />
+                        <TextField
+                            label="Enter your password"
+                            {...register("password", { required: "Password is required" })}
+                            error={!!errors.password}
+                            helperText={errors.password ? errors.password.message : ""}
                             fullWidth
                             margin="normal"
                         />
