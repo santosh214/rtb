@@ -1,6 +1,9 @@
 import { Box, TextField, Button, Card, Typography } from '@mui/material'
 import { useForm, SubmitHandler } from "react-hook-form"
 import { boxShadow, elementSpacing, formWidth } from './../../../utils/constant';
+import { api } from './api';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 type Inputs = {
     name: string
@@ -9,14 +12,27 @@ type Inputs = {
 }
 
 export default function AddUser() {
+    const navigate=useNavigate()
     const {
         register,
         handleSubmit,
         // watch,
         formState: { errors },
     } = useForm<Inputs>()
-    const onSubmit: SubmitHandler<Inputs> = (data) => {
-        localStorage.setItem('email', data.email)
+    const onSubmit: SubmitHandler<Inputs> = async(data) => {
+        console.log("dddd",data)
+        // localStorage.setItem('email', data.email)
+        try {
+            
+            const addUser= await api.addUser(data)
+            console.log('Add User', addUser)
+            toast.success("User added successfully")
+            navigate('/dashboard/users')
+            
+        } catch (error) {
+            
+            console.log('Error',error)
+        }
     }
 
     return (

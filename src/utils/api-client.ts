@@ -2,7 +2,7 @@ import { ApiResponse, ParamsModel } from "../shared/api-models";
 
 
 
-const baseURL = 'http://localhost:3000/';
+const baseURL = process.env.REACT_APP_API_URL;
 export const apiClient = {
   get: async <T>(
     url: string,
@@ -47,6 +47,8 @@ export const apiClient = {
     //   });
     const fetchOpt = await handleOptions('POST', body, fetchOptions, isForm);
     const response = await fetch(`${baseURL}${url}`, fetchOpt);
+console.log("post",response)
+    
     if (!response.ok) {
     //   if (response.status === 401) {
     //     throw new Error(authError, {
