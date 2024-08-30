@@ -69,6 +69,41 @@ console.log("post",response)
     }
     return res.data as Promise<T>;
   },
+  put: async <T>(
+    url: string,
+    body: any,
+    fetchOptions?: RequestInit,
+    isForm?: boolean
+  ): Promise<T> => {
+    // const sess: any = await getServerSession(authOptions);
+    // if (sess === null)
+    //   throw new Error(authError, {
+    //     cause: '401',
+    //   });
+    const fetchOpt = await handleOptions('PUT', body, fetchOptions, isForm);
+    const response = await fetch(`${baseURL}${url}`, fetchOpt);
+console.log("post",response)
+    
+    if (!response.ok) {
+    //   if (response.status === 401) {
+    //     throw new Error(authError, {
+    //       cause: '401',
+    //     });
+    //   }
+      if (response.status === 500) {
+        throw new Error('Something went wrong');
+      }
+      const res = (await response.json()) as ApiResponse<null>; //
+      if (!res.success) {
+        throw new Error(res.error_message);
+      }
+    }
+    const res = (await response.json()) as ApiResponse<T>;
+    if (res.success === false) {
+      throw new Error(res.error_message);
+    }
+    return res.data as Promise<T>;
+  },
   delete: async <T>(url: string, body: any, fetchOptions?: RequestInit): Promise<T> => {
     // const sess: any = await getServerSession(authOptions);
     // if (sess === null)

@@ -1,24 +1,84 @@
 {
   "users": [
     {
-      "id": "1",
-      "name": "santosh",
-      "email": "santosh@impetus.com"
+      "id": "3a79a00b-3464-4c4b-9bf8-f9f0c1c34c35",
+      "name": "ajay rawat",
+      "email": "ajayrawat@gmail.com"
     },
     {
-      "id": "123",
-      "name": "santy",
-      "email": "santy@impetus.com"
-    },
-    {
-      "id": "234",
-      "name": "pawan",
-      "email": "pawan@gmail.com"
-    },
-    {
-      "id": "22",
-      "name": "test",
-      "email": "test@gmail.com"
+      "id": "b03dac47-4171-4f70-852e-187cc0170757",
+      "name": "santosh singh",
+      "email": "santosh.singh@impetus.com",
+      "amount": "1"
     }
-  ]
+  ],
+
+  "canteen_menu": {
+    "today_menu": [
+      {
+        "id": 1,
+        "name": "Matar Paneer",
+        "price":"10"
+      },
+
+      {
+        "id": 2,
+        "name": "Tuar Daal",
+        "price":"10"
+
+      },
+      {
+        "id": 3,
+        "name": "Rice",
+        "price":"10"
+
+      },
+      {
+        "id": 4,
+        "name": "Chapati",
+        "price":"10"
+
+      },
+      {
+        "id": 5,
+        "name": "Salad",
+        "price":"10"
+
+      }
+    ],
+    "always_available": [
+        {
+          "name": "Coffee",
+          "price": 1.99,
+          "description": "Hot brewed coffee, available in regular and decaf."
+        },
+        {
+          "name": "Tea",
+          "price": 1.49,
+          "description": "Assorted teas including green, black, and herbal."
+        },
+        {
+          "name": "Bottled Water",
+          "price": 0.99,
+          "description": "Chilled bottled water."
+        },
+      
+        {
+          "name": "Chips",
+          "price": 1.29,
+          "description": "Assorted flavors of potato chips."
+        },
+        {
+          "name": "Fruit",
+          "price": 0.99,
+          "description": "Fresh seasonal fruit."
+        },
+        {
+          "name": "Cookies",
+          "price": 1.49,
+          "description": "Freshly baked cookies available in chocolate chip, oatmeal, and sugar."
+        }
+      
+    ]
+  }
 }
