@@ -47,38 +47,31 @@
       }
     ],
     "always_available": [
-        {
-          "name": "Coffee",
-          "price": 1.99,
-          "description": "Hot brewed coffee, available in regular and decaf."
-        },
-        {
-          "name": "Tea",
-          "price": 1.49,
-          "description": "Assorted teas including green, black, and herbal."
-        },
-        {
-          "name": "Bottled Water",
-          "price": 0.99,
-          "description": "Chilled bottled water."
-        },
-      
-        {
-          "name": "Chips",
-          "price": 1.29,
-          "description": "Assorted flavors of potato chips."
-        },
-        {
-          "name": "Fruit",
-          "price": 0.99,
-          "description": "Fresh seasonal fruit."
-        },
-        {
-          "name": "Cookies",
-          "price": 1.49,
-          "description": "Freshly baked cookies available in chocolate chip, oatmeal, and sugar."
-        }
-      
+      {
+        "id": 11,
+        "name": "Coffee",
+        "price": 20
+      },
+      {
+        "id": 21,
+        "name": "Tea",
+        "price": 10
+      },
+      {
+        "id": 31,
+        "name": "Bottled Water",
+        "price": 20
+      },
+      {
+        "id": 41,
+        "name": "Chips",
+        "price": 10
+      },
+      {
+        "id": 61,
+        "name": "Cookies",
+        "price": 10
+      }
     ]
   }
 }
