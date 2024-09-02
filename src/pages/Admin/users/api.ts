@@ -7,13 +7,13 @@ interface User {
   id: number;
   name: string;
   email: string;
+  amount: string;
 }
 
 export const api = {
   getUsers: async (params?: ParamsModel): Promise<User[]> => {
-    console.log("params",params)
     try {
-      const response = await apiClient.get<User[]>(`users`);
+      const response = await apiClient.get<User[]>(`users`,params);
       return response; // Return the response directly
     } catch (err: any) {
       console.error('🚀 ~ getUsers: ~ err:', err);
@@ -29,9 +29,9 @@ export const api = {
       throw new ApiError(`Failed to add User - ${err.message || err}`);
     }
   },
-  updateUser: async (params?: ParamsModel): Promise<any> => {
+  updateUser: async (id:string|undefined,params?: ParamsModel): Promise<any> => {
     try {
-      const response = await apiClient.put<any>('users', params);
+      const response = await apiClient.put<any>('users', id,params);
       return response;
     } catch (err: any) {
       console.error('🚀 ~ addUser: ~ err:', err);
@@ -40,3 +40,5 @@ export const api = {
   },
   
 };
+
+

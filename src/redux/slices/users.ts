@@ -4,7 +4,7 @@ export interface User {
     id: number | string;
     name: string;
     age: number;
-    mailId: string
+    mailId: string,
 }
 export interface UserType {
     users: User[]

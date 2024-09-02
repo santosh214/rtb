@@ -32,12 +32,12 @@ export const api = {
     }
   },
   updateFoodItem: async (params?: ParamsModel): Promise<any> => {
-    try {
-      const response = await apiClient.put<any>('canteen_menu', params);
-      return response;
-    } catch (err: any) {
-      console.error('🚀 ~ addUser: ~ err:', err);
-      throw new ApiError(`Failed to add User - ${err.message || err}`);
-    }
+    // try {
+    //   const response = await apiClient.put<any>('canteen_menu', params);
+    //   return response;
+    // } catch (err: any) {
+    //   console.error('🚀 ~ addUser: ~ err:', err);
+    //   throw new ApiError(`Failed to add User - ${err.message || err}`);
+    // }
   },
 };
