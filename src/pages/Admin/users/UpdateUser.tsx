@@ -26,7 +26,7 @@ export default function UpdateUser() {
     handleSubmit,
     // watch,
     formState: { errors },
-    setValue
+    setValue,watch
   } = useForm<Inputs>();
 
   useEffect(() => {
@@ -39,6 +39,10 @@ export default function UpdateUser() {
       
     }
   }, [id])
+ const _name= watch("name")
+ const _email= watch("email")
+ const _amount= watch("amount")
+
   
   const getUserById=async(id:string)=>{
     try {
@@ -85,6 +89,9 @@ export default function UpdateUser() {
               helperText={errors.name ? errors.name.message : ''}
               fullWidth
               margin="normal"
+              InputLabelProps={{
+                shrink:!!_name
+              }}
 
             />
             <TextField
@@ -95,6 +102,9 @@ export default function UpdateUser() {
               helperText={errors.email ? errors.email.message : ''}
               fullWidth
               margin="normal"
+              InputLabelProps={{
+                shrink:!!_email
+              }}
             />
             <TextField
               label="Amount"
@@ -107,6 +117,9 @@ export default function UpdateUser() {
               helperText={errors.amount ? errors.amount.message : ''}
               fullWidth
               margin="normal"
+              InputLabelProps={{
+                shrink:!!_amount
+              }}
             />
 
             <Button

@@ -10,68 +10,36 @@
       "name": "santosh singh",
       "email": "santosh.singh@impetus.com",
       "amount": "1"
+    },
+    {
+      "id": "bed099f9-f1f1-4b6f-994e-735be041e97a",
+      "name": "sushant",
+      "email": "sushant@gmail.com",
+      "amount": "12"
     }
   ],
-
-  "canteen_menu": {
-    "today_menu": [
-      {
-        "id": 1,
-        "name": "Matar Paneer",
-        "price":"10"
-      },
-
-      {
-        "id": 2,
-        "name": "Tuar Daal",
-        "price":"10"
-
-      },
-      {
-        "id": 3,
-        "name": "Rice",
-        "price":"10"
-
-      },
-      {
-        "id": 4,
-        "name": "Chapati",
-        "price":"10"
-
-      },
-      {
-        "id": 5,
-        "name": "Salad",
-        "price":"10"
-
-      }
-    ],
-    "always_available": [
-      {
-        "id": 11,
-        "name": "Coffee",
-        "price": 20
-      },
-      {
-        "id": 21,
-        "name": "Tea",
-        "price": 10
-      },
-      {
-        "id": 31,
-        "name": "Bottled Water",
-        "price": 20
-      },
-      {
-        "id": 41,
-        "name": "Chips",
-        "price": 10
-      },
-      {
-        "id": 61,
-        "name": "Cookies",
-        "price": 10
-      }
-    ]
-  }
+  "items": [
+    {
+      "id": "12345",
+      "name": "laptop",
+      "price": "1000"
+    },
+    {
+      "id": "67890",
+      "name": "mobile",
+      "price": "500"
+    },
+    {
+      "id": "ac98362a-0f6d-47f4-8e07-205c5784c67e",
+      "name": "Sandwich",
+      "quantity": "20",
+      "price": "30"
+    },
+    {
+      "id": "d3044bf1-8fc4-4d26-9797-a92b9179e359",
+      "name": "Banana",
+      "quantity": "200",
+      "price": "3"
+    }
+  ]
 }
