@@ -61,7 +61,7 @@ export const apiClient = {
     //     cause: '401',
     //   });
     const fetchOpt = await handleOptions('PUT', body, fetchOptions, isForm);
-    const response = await fetch(`${baseURL}${url}${id}`, fetchOpt);
+    const response = await fetch(`${baseURL}${url}/${id}`, fetchOpt);
     console.log('post', response);
 
     if (!response.ok) {

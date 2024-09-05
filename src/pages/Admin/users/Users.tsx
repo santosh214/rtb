@@ -65,6 +65,7 @@ export default function Users() {
             columns={userColumns}
             onEdit={(id) => console.log(`Edit item ${id}`)}
             onDelete={(id) => console.log(`Delete item ${id}`)}
+            route='user'
           />
         </Grid>
       </Grid>

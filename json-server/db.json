@@ -6,16 +6,16 @@
       "email": "ajayrawat@gmail.com"
     },
     {
-      "id": "b03dac47-4171-4f70-852e-187cc0170757",
       "name": "santosh singh",
       "email": "santosh.singh@impetus.com",
-      "amount": "1"
+      "amount": "10",
+      "id": "b03dac47-4171-4f70-852e-187cc0170757"
     },
     {
-      "id": "bed099f9-f1f1-4b6f-994e-735be041e97a",
       "name": "sushant",
       "email": "sushant@gmail.com",
-      "amount": "12"
+      "amount": "120",
+      "id": "bed099f9-f1f1-4b6f-994e-735be041e97a"
     }
   ],
   "items": [
@@ -30,10 +30,10 @@
       "price": "500"
     },
     {
-      "id": "ac98362a-0f6d-47f4-8e07-205c5784c67e",
       "name": "Sandwich",
-      "quantity": "20",
-      "price": "30"
+      "quantity": "78",
+      "price": "30",
+      "id": "ac98362a-0f6d-47f4-8e07-205c5784c67e"
     },
     {
       "id": "d3044bf1-8fc4-4d26-9797-a92b9179e359",

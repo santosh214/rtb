@@ -4,5 +4,5 @@ export const itemsColumns: Column[] = [
   { id: 'id', label: 'ID' },
   { id: 'name', label: 'Name' },
   { id: 'quantity', label: 'Quantity' },
-  { id: 'price', label: 'Action', isActionColumn: true },
+  { id: 'price', label: 'Price' },
 ];

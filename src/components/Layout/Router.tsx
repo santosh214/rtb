@@ -9,6 +9,7 @@ import Login from '../../pages/common/Login';
 import UpdateUser from '../../pages/Admin/users/UpdateUser';
 import AdminItem from '../../pages/Admin/Items/AdminItem';
 import AddItem from '../../pages/Admin/Items/AddItems';
+import UpdateItems from '../../pages/Admin/Items/UpdateItems';
 
 
 const PrivateRoutes = () => {
@@ -26,9 +27,11 @@ export default function Router() {
         <Route path="/dashboard/items" element={<AdminItem />} />
         <Route path="/dashboard/items" element={<AdminItem />} />
         <Route path="/dashboard/items/add" element={<AddItem/>} />
+        <Route path="/dashboard/items/:id" element={<UpdateItems/>} />
         <Route path="/dashboard/user/:id" element={<UpdateUser />} />
         <Route path="/dashboard/transactions" element={<Transactions />} />
         <Route path="/dashboard/users/add" element={<AddUser />} />
+        <Route path="/dashboard/users" element={<Users />} />
         <Route path="/" element={<UsersHome />} />
       </Route>
 

@@ -1,13 +1,7 @@
 // src/components/MasterList.tsx
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Button,
-  TextField,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
   Grid,
   Box,
 } from '@mui/material';
@@ -26,27 +20,9 @@ interface MasterListProps {
 
 const MasterList: React.FC<MasterListProps> = ({
   masterList,
-  addItem,
-  updateItem,
-  deleteItem,
 }) => {
-  const [itemName, setItemName] = useState('');
-  const [quantity, setQuantity] = useState<number | ''>('');
-  const [price, setPrice] = useState<number | ''>('');
 
-  const handleAddItem = () => {
-    if (itemName && quantity !== '' && price !== '') {
-      addItem({
-        id: Math.random().toString(),
-        name: itemName,
-        quantity: Number(quantity),
-        price: Number(price),
-      });
-      setItemName('');
-      setQuantity('');
-      setPrice('');
-    }
-  };
+
 
   return (
     <>
@@ -65,6 +41,7 @@ const MasterList: React.FC<MasterListProps> = ({
             columns={itemsColumns}
             onEdit={(id) => console.log(`Edit item ${id}`)}
             onDelete={(id) => console.log(`Delete item ${id}`)}
+            route="items"
           />
         </Grid>
       </Grid>
