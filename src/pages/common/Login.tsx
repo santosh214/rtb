@@ -1,6 +1,7 @@
 import { Box, TextField, Button, Card, Typography } from '@mui/material'
 import { useForm, SubmitHandler } from "react-hook-form"
 import { boxShadow, elementSpacing, formWidth } from '../../utils/constant'
+import UIButton from '../../components/UIElements/Button'
 
 type Inputs = {
     email: string
@@ -44,9 +45,9 @@ export default function Login() {
                             margin="normal"
                         />
 
-                        <Button type="submit" variant="contained" color="primary" sx={{ mt: elementSpacing }}>
+                        <UIButton type="submit" variant="contained" color="primary" sx={{ mt: elementSpacing }}>
                             Submit
-                        </Button>
+                        </UIButton>
                     </form>
                 </Card>
 

@@ -10,6 +10,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 import { useEffect } from 'react';
+import UIButton from '../../../components/UIElements/Button';
 
 type Inputs = {
   name: string;
@@ -119,14 +120,14 @@ export default function UpdateItems() {
               }}
             />
 
-            <Button
+            <UIButton
               type="submit"
               variant="contained"
               color="primary"
               sx={{ mt: elementSpacing }}
             >
               Submit
-            </Button>
+            </UIButton>
           </form>
         </Card>
       </Box>

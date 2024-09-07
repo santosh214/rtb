@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { userColumns } from './utils';
 import { toast } from 'react-toastify';
 import { api } from './api';
+import UIButton from '../../../components/UIElements/Button';
 
 interface User {
   id: number;
@@ -47,7 +48,7 @@ export default function Users() {
     <>
       <Box display={'flex'} justifyContent={'end'} mb={sectionSpacing}>
         <NavLink to={'/dashboard/users/add'}>
-          <Button variant='contained'>Add User</Button>
+          <UIButton variant='contained'>Add User</UIButton>
         </NavLink>
       </Box>
       <Grid container spacing={sectionSpacing}>

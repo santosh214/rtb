@@ -16,6 +16,15 @@ export const api = {
       throw new ApiError(`Failed to fetch Users List - ${err.message || err}`);
     }
   },
+  getItemsOfTheDay: async (params?: ParamsModel): Promise<Item[]> => {
+    try {
+      const response = await apiClient.get<Item[]>(`items-of-the-day`,params);
+      return response; // Return the response directly
+    } catch (err: any) {
+      console.error('🚀 ~ getUsers: ~ err:', err);
+      throw new ApiError(`Failed to fetch Users List - ${err.message || err}`);
+    }
+  },
   addItem: async (params?: ParamsModel): Promise<any> => {
     try {
       const response = await apiClient.post<any>('items', params);
@@ -23,6 +32,15 @@ export const api = {
     } catch (err: any) {
       console.error('🚀 ~ addUser: ~ err:', err);
       throw new ApiError(`Failed to add User - ${err.message || err}`);
+    }
+  },
+  addItemsOfTheDay: async (params?: ParamsModel): Promise<any> => {
+    try {
+      const response = await apiClient.post<any>('items-of-the-day', params);
+      return response;
+    } catch (err: any) {
+      console.error('🚀 ~ add items-of-the-day: ~ err:', err);
+      throw new ApiError(`Failed to add items-of-the-day- ${err.message || err}`);
     }
   },
   updateItem: async (id:string|undefined,params?: ParamsModel): Promise<any> => {

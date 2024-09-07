@@ -9,6 +9,7 @@ import { api } from './api';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
+import UIButton from '../../../components/UIElements/Button';
 
 type Inputs = {
   id: string;
@@ -76,14 +77,14 @@ export default function AddItem() {
               margin="normal"
             />
 
-            <Button
+            <UIButton
               type="submit"
               variant="contained"
               color="primary"
               sx={{ mt: elementSpacing }}
             >
               Submit
-            </Button>
+            </UIButton>
           </form>
         </Card>
       </Box>

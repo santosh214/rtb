@@ -41,5 +41,43 @@
       "quantity": "200",
       "price": "3"
     }
+  ],
+  "items-of-the-day": [
+    {
+      "id": "67890",
+      "name": "mobile",
+      "price": "500",
+      "quantity": 2
+    },
+    {
+      "id": "d3044bf1-8fc4-4d26-9797-a92b9179e359",
+      "name": "Banana",
+      "quantity": 2,
+      "price": "3"
+    },
+    {
+      "id": "ac98362a-0f6d-47f4-8e07-205c5784c67e",
+      "name": "Sandwich",
+      "quantity": 2,
+      "price": "30"
+    },
+    {
+      "id": "d3044bf1-8fc4-4d26-9797-a92b9179e359",
+      "name": "Banana",
+      "quantity": 1,
+      "price": "3"
+    },
+    {
+      "id": "67890",
+      "name": "mobile",
+      "price": "500",
+      "quantity": 12
+    },
+    {
+      "id": "d3044bf1-8fc4-4d26-9797-a92b9179e359",
+      "name": "Banana",
+      "quantity": 300,
+      "price": "3"
+    }
   ]
 }

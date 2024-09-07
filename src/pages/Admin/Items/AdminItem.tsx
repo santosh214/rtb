@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { Item } from './utils/model';
 import MasterList from './MasterList';
 import ItemsOfTheDay from './ItemsOfTheDay';
-import AdminItemView from './AdminItemView';
 import { api } from './api';
 import { toast } from 'react-toastify';
+import { Divider } from '@mui/material';
 
 const AdminItem: React.FC = () => {
   const [masterList, setMasterList] = useState<Item[]>([]);
@@ -21,11 +21,11 @@ const AdminItem: React.FC = () => {
   const getItemList=async()=>{
     try {
         const _items = await api.getItems();
-        console.log("🚀 ~ getAllUsers ~ users:", _items);
+        console.log("🚀 ~ getItems ~ :", _items);
         setMasterList(_items); // Set the user data correctly
       } catch (error) {
-        console.error("🚀 ~ getAllUsers ~ error:", error);
-        toast.error("Failed to fetch Users list");
+        console.error("🚀 ~ getItems ~ error:", error);
+        toast.error("Failed to fetch items list");
       }
   }
   
@@ -56,21 +56,18 @@ const AdminItem: React.FC = () => {
   };
 
   return (
-    <div>
+    <>
       <MasterList
         masterList={masterList} 
         addItem={addItem} 
         updateItem={updateItem} 
         deleteItem={deleteItem} 
       />
+      <Divider/>
       <ItemsOfTheDay 
         masterList={masterList} 
-        itemsOfTheDay={itemsOfTheDay} 
-        addItemOfTheDay={addItemOfTheDay} 
-        updateQuantity={updateQuantity} 
       />
-      <AdminItemView itemsOfTheDay={masterList} />
-    </div>
+    </>
   );
 };
 

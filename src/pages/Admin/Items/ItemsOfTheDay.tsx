@@ -1,65 +1,109 @@
 // src/components/ItemsOfTheDay.tsx
-import React, { useState } from 'react';
-import { Button, TextField, MenuItem, Select, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import {
+  Button,
+  TextField,
+  MenuItem,
+  Select,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  Typography,
+  Box,
+  Divider,
+  Grid,
+} from '@mui/material';
 import { Item, ItemIndex } from './utils/model';
+import { api } from './api';
+import { toast } from 'react-toastify';
+import { UITable } from '../../../components/UIElements/Table';
+import { itemsColumns } from './utils/constant';
+import UIButton from '../../../components/UIElements/Button';
 
 interface ItemsOfTheDayProps {
   masterList: Item[];
-  itemsOfTheDay: Item[];
-  addItemOfTheDay: (item: Item) => void;
-  updateQuantity: (index: ItemIndex, quantity: number) => void;
 }
 
-const ItemsOfTheDay: React.FC<ItemsOfTheDayProps> = ({ masterList, itemsOfTheDay, addItemOfTheDay, updateQuantity }) => {
+const ItemsOfTheDay: React.FC<ItemsOfTheDayProps> = ({ masterList }) => {
   const [selectedItem, setSelectedItem] = useState<string>('');
   const [quantity, setQuantity] = useState<number | ''>('');
+  const [itemsOfTheDay, setItemsOfTheDay] = useState<Item[]>([]);
 
-  const handleAddItemOfTheDay = () => {
+  const handleAddItemOfTheDay = async () => {
     const item = masterList.find((item) => item.name === selectedItem);
     if (item && quantity !== '') {
-      addItemOfTheDay({ ...item, quantity: Number(quantity) });
+      try {
+        const AddItem = await api.addItemsOfTheDay({
+          ...item,
+          quantity: Number(quantity),
+        });
+        console.log('🚀 ~ handleAddItemOfTheDay ~ AddItem:', AddItem);
+        toast.success('Item added successfully');
+        getItemListOfTheDay()
+      } catch (error) {
+        console.log('🚀 ~ handleAddItemOfTheDay ~ error:', error);
+      }
       setSelectedItem('');
       setQuantity('');
     }
   };
 
-  return (
-    <div>
-      <h2>Items Of The Day</h2>
-      <Select value={selectedItem} onChange={(e) => setSelectedItem(e.target.value as string)}>
-        {masterList.map((item, index) => (
-          <MenuItem key={index} value={item.name}>{item.name}</MenuItem>
-        ))}
-      </Select>
-      <TextField label="Quantity" type="number" value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} />
-      <Button variant="contained" color="primary" onClick={handleAddItemOfTheDay}>Add Item</Button>
+  useEffect(() => {
+    
+  getItemListOfTheDay(); 
+    return () => {
       
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Item Name</TableCell>
-            <TableCell>Quantity</TableCell>
-            <TableCell>Price</TableCell>
-            <TableCell>Actions</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {itemsOfTheDay.map((item, index) => (
-            <TableRow key={index}>
-              <TableCell>{item.name}</TableCell>
-              <TableCell>
-                <TextField 
-                  type="number" 
-                  value={item.quantity} 
-                  onChange={(e) => updateQuantity(index, Number(e.target.value))} 
-                />
-              </TableCell>
-              <TableCell>{item.price}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </div>
+    }
+  }, [])
+  
+  const getItemListOfTheDay=async()=>{
+    try {
+        const _items = await api.getItemsOfTheDay();
+        console.log("🚀 ~ getItems ~ :", _items);
+        setItemsOfTheDay(_items); // Set the user data correctly
+      } catch (error) {
+        console.error("🚀 ~ getItems ~ error:", error);
+        toast.error("Failed to fetch items list");
+      }
+  }
+  return (
+    <Box py={3}>
+      <Typography py={2} fontWeight={600} variant="h5">
+        Items Of The Day
+      </Typography>
+
+      <Grid container spacing={2} py={2}>
+        <Grid item xs={12} sm={3}>
+          <Select
+            fullWidth
+            value={selectedItem}
+            onChange={(e) => setSelectedItem(e.target.value as string)}
+          >
+            {masterList.map((item, index) => (
+              <MenuItem key={index} value={item.name}>
+                {item.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </Grid>
+        <Grid item xs={12} sm={3}>
+          <TextField
+            fullWidth
+            label="Quantity"
+            type="number"
+            value={quantity}
+            onChange={(e) => setQuantity(Number(e.target.value))}
+          />
+        </Grid>
+        <Grid item xs={12} sm={3} alignItems={'center'} display={'flex'}>
+          <UIButton onClick={handleAddItemOfTheDay}>Add Item</UIButton>
+        </Grid>
+      </Grid>
+
+      <UITable columns={itemsColumns} data={itemsOfTheDay} route='items'/>
+    </Box>
   );
 };
 

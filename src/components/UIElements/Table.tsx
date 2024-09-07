@@ -53,7 +53,7 @@ const UITable: React.FC<TableWithRowActionsProps> = ({
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((row: DataRow) => (
+          {data.map((row: DataRow, index: number) => (
             <TableRow
               key={row.id}
               hover
@@ -61,7 +61,9 @@ const UITable: React.FC<TableWithRowActionsProps> = ({
               sx={{ cursor: 'pointer' }}
             >
               {columns.map((col) => (
-                <TableCell key={col.id}>{row[col.id]}</TableCell>
+                <TableCell key={col.id}>
+                  {col.id === 'id' ? index + 1 : row[col.id]}
+                </TableCell>
               ))}
             </TableRow>
           ))}

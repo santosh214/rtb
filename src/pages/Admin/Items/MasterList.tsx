@@ -4,12 +4,14 @@ import {
   Button,
   Grid,
   Box,
+  Typography,
 } from '@mui/material';
 import { Item, ItemIndex } from './utils/model';
 import { UITable } from '../../../components/UIElements/Table';
 import { itemsColumns } from './utils/constant';
 import { NavLink } from 'react-router-dom';
 import { sectionSpacing } from '../../../utils/constant';
+import UIButton from '../../../components/UIElements/Button';
 
 interface MasterListProps {
   masterList: Item[];
@@ -25,10 +27,12 @@ const MasterList: React.FC<MasterListProps> = ({
 
 
   return (
-    <>
+    <Box >
+      <Typography  fontWeight={600} variant='h5'>All Items</Typography>
+
       <Box display={'flex'} justifyContent={'end'} mb={sectionSpacing}>
         <NavLink to={'/dashboard/items/add'}>
-          <Button variant="contained">Add Item</Button>
+          <UIButton variant="contained">Add Item</UIButton>
         </NavLink>
       </Box>
       <Grid container spacing={sectionSpacing}>
@@ -45,7 +49,7 @@ const MasterList: React.FC<MasterListProps> = ({
           />
         </Grid>
       </Grid>
-    </>
+    </Box>
   );
 };
 
