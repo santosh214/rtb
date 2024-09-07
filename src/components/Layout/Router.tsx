@@ -10,6 +10,7 @@ import UpdateUser from '../../pages/Admin/users/UpdateUser';
 import AdminItem from '../../pages/Admin/Items/AdminItem';
 import AddItem from '../../pages/Admin/Items/AddItems';
 import UpdateItems from '../../pages/Admin/Items/UpdateItems';
+import SignUp from '../../pages/common/SignUp';
 
 
 const PrivateRoutes = () => {
@@ -36,6 +37,7 @@ export default function Router() {
       </Route>
 
       <Route path="/auth/login" element={<Login />} />
+      <Route path="/auth/register" element={<SignUp />} />
     </Routes>
   )
 }

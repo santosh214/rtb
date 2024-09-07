@@ -11,11 +11,13 @@ import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 import UIButton from '../../../components/UIElements/Button';
 
-type Inputs = {
+export type UserInputs = {
+  employeeId?:string
   name: string;
   email: string;
   id: string;
   amount:number
+  password:string
 };
 
 export default function AddUser() {
@@ -25,8 +27,8 @@ export default function AddUser() {
     handleSubmit,
     // watch,
     formState: { errors },
-  } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+  } = useForm<UserInputs>();
+  const onSubmit: SubmitHandler<UserInputs> = async (data) => {
     console.log('dddd', data);
     // localStorage.setItem('email', data.email)
     data.id = uuidv4();
