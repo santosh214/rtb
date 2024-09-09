@@ -1,6 +1,6 @@
 import { useCallback, useState, useEffect } from 'react';
 import { UITable } from '../../../components/UIElements/Table';
-import { sectionSpacing } from '../../../utils/constant';
+import {  sectionSpacing, shadowPadding } from '../../../utils/constant';
 import { Box, Button, Grid, TextField } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { userColumns } from './utils';
@@ -47,7 +47,7 @@ export default function Users() {
   };
 
   return (
-    <>
+    <Box sx={{...shadowPadding}} >
       <Box display={'flex'} justifyContent={'end'} mb={sectionSpacing}>
         <NavLink to={'/dashboard/users/add'}>
           <UIButton variant="contained">Add User</UIButton>
@@ -62,7 +62,7 @@ export default function Users() {
             onChange={(e) => handleUserFilter(e.target.value)}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} >
           <UITable
             data={filteredData() || []} // Ensure data is not undefined
             columns={userColumns}
@@ -72,6 +72,6 @@ export default function Users() {
           />
         </Grid>
       </Grid>
-    </>
+    </Box>
   );
 }

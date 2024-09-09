@@ -4,14 +4,15 @@
       "id": "3a79a00b-3464-4c4b-9bf8-f9f0c1c34c35",
       "name": "ajay rawat",
       "email": "ajayrawat@gmail.com",
-      "password":"12345678"
+      "password": "12345678"
     },
     {
       "name": "santosh singh",
       "email": "santosh.singh@impetus.com",
       "amount": "10",
       "id": "b03dac47-4171-4f70-852e-187cc0170757",
-      "role": "admin"
+      "role": "admin",
+      "password": "12345678"
     },
     {
       "name": "sushant",
@@ -26,6 +27,12 @@
       "email": "nayan@gmail.com",
       "position": "",
       "password": "nayan"
+    },
+    {
+      "id": "af3f846b-0c30-48e1-b542-3c5b6962a442",
+      "name": "sushi",
+      "email": "sushi@gmail.com",
+      "amount": "123"
     }
   ],
   "items": [
@@ -50,6 +57,24 @@
       "name": "Banana",
       "quantity": "200",
       "price": "3"
+    },
+    {
+      "id": "d4d9986c-0198-41f2-85eb-34343dd30679",
+      "name": "grapes",
+      "quantity": "120",
+      "price": "12"
+    },
+    {
+      "id": "4b1402ed-b797-49b8-83d5-bb5615a56e26",
+      "name": "mango",
+      "quantity": "90",
+      "price": "99"
+    },
+    {
+      "id": "00eb0d94-9616-4936-84e3-d9cfeea9fd51",
+      "name": "chiku",
+      "quantity": "34",
+      "price": "12"
     }
   ],
   "items-of-the-day": [

@@ -22,7 +22,7 @@ export default function Login() {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+  const onSubmit: SubmitHandler<Inputs> = async (data:any) => {
     try {
       if (data.email) {
         const users = await api.getUsers();

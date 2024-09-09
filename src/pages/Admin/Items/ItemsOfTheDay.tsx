@@ -21,6 +21,7 @@ import { toast } from 'react-toastify';
 import { UITable } from '../../../components/UIElements/Table';
 import { itemsColumns } from './utils/constant';
 import UIButton from '../../../components/UIElements/Button';
+import { sectionSpacing, shadowPadding } from '../../../utils/constant';
 
 interface ItemsOfTheDayProps {
   masterList: Item[];
@@ -41,7 +42,7 @@ const ItemsOfTheDay: React.FC<ItemsOfTheDayProps> = ({ masterList }) => {
         });
         console.log('🚀 ~ handleAddItemOfTheDay ~ AddItem:', AddItem);
         toast.success('Item added successfully');
-        getItemListOfTheDay()
+        getItemListOfTheDay();
       } catch (error) {
         console.log('🚀 ~ handleAddItemOfTheDay ~ error:', error);
       }
@@ -51,31 +52,28 @@ const ItemsOfTheDay: React.FC<ItemsOfTheDayProps> = ({ masterList }) => {
   };
 
   useEffect(() => {
-    
-  getItemListOfTheDay(); 
-    return () => {
-      
-    }
-  }, [])
-  
-  const getItemListOfTheDay=async()=>{
+    getItemListOfTheDay();
+    return () => {};
+  }, []);
+
+  const getItemListOfTheDay = async () => {
     try {
-        const _items = await api.getItemsOfTheDay();
-        console.log("🚀 ~ getItems ~ :", _items);
-        setItemsOfTheDay(_items); // Set the user data correctly
-      } catch (error) {
-        console.error("🚀 ~ getItems ~ error:", error);
-        toast.error("Failed to fetch items list");
-      }
-  }
+      const _items = await api.getItemsOfTheDay();
+      console.log('🚀 ~ getItems ~ :', _items);
+      setItemsOfTheDay(_items); // Set the user data correctly
+    } catch (error) {
+      console.error('🚀 ~ getItems ~ error:', error);
+      toast.error('Failed to fetch items list');
+    }
+  };
   return (
-    <Box py={3}>
-      <Typography py={2} fontWeight={600} variant="h5">
+    <Box sx={{ ...shadowPadding }}>
+      <Typography fontWeight={600} variant="h5">
         Items Of The Day
       </Typography>
 
-      <Grid container spacing={2} py={2}>
-        <Grid item xs={12} sm={3}>
+      <Grid container spacing={2} pt={2} pb={3}>
+        <Grid item xs={12} sm={3} md={4}>
           <Select
             fullWidth
             value={selectedItem}
@@ -88,7 +86,7 @@ const ItemsOfTheDay: React.FC<ItemsOfTheDayProps> = ({ masterList }) => {
             ))}
           </Select>
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12} sm={3} md={4}>
           <TextField
             fullWidth
             label="Quantity"
@@ -102,7 +100,11 @@ const ItemsOfTheDay: React.FC<ItemsOfTheDayProps> = ({ masterList }) => {
         </Grid>
       </Grid>
 
-      <UITable columns={itemsColumns} data={itemsOfTheDay} route='items'/>
+      <Grid container spacing={sectionSpacing}>
+        <Grid item xs={12}>
+          <UITable columns={itemsColumns} data={itemsOfTheDay} route="items" />
+        </Grid>
+      </Grid>
     </Box>
   );
 };
