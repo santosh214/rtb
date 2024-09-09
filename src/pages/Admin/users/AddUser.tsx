@@ -12,12 +12,13 @@ import { v4 as uuidv4 } from 'uuid';
 import UIButton from '../../../components/UIElements/Button';
 
 export type UserInputs = {
-  employeeId?:string
+  employeeId?: string;
   name: string;
   email: string;
   id: string;
-  amount:number
-  password:string
+  amount: number;
+  password: string;
+  role: string;
 };
 
 export default function AddUser() {
@@ -70,8 +71,7 @@ export default function AddUser() {
               label="Amount"
               type="number"
               inputProps={{
-                min:0,
-                
+                min: 0,
               }}
               {...register('amount')}
               error={!!errors.amount}

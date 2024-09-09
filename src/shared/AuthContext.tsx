@@ -4,6 +4,8 @@ interface User {
   id: string;
   name: string;
   email: string;
+  role?:string
+  password?:string;
   // Add other user properties as needed
 }
 

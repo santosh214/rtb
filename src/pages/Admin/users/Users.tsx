@@ -12,6 +12,8 @@ interface User {
   id: number;
   name: string;
   email: string;
+  password?: string;
+  role?: string;
 }
 
 export default function Users() {
@@ -27,20 +29,20 @@ export default function Users() {
   };
 
   const filteredData = useCallback(() => {
-    return users?.filter(user =>
-      user.name.toLowerCase().includes(filterUser.toLowerCase())
+    return users?.filter((user) =>
+      user.name.toLowerCase().includes(filterUser.toLowerCase()),
     );
   }, [filterUser, users]);
-  console.log("fff",filteredData())
+  console.log('fff', filteredData());
 
   const getAllUsers = async () => {
     try {
       const _users = await api.getUsers();
-      console.log("🚀 ~ getAllUsers ~ users:", _users);
+      console.log('🚀 ~ getAllUsers ~ users:', _users);
       setUsers(_users); // Set the user data correctly
     } catch (error) {
-      console.error("🚀 ~ getAllUsers ~ error:", error);
-      toast.error("Failed to fetch Users list");
+      console.error('🚀 ~ getAllUsers ~ error:', error);
+      toast.error('Failed to fetch Users list');
     }
   };
 
@@ -48,13 +50,13 @@ export default function Users() {
     <>
       <Box display={'flex'} justifyContent={'end'} mb={sectionSpacing}>
         <NavLink to={'/dashboard/users/add'}>
-          <UIButton variant='contained'>Add User</UIButton>
+          <UIButton variant="contained">Add User</UIButton>
         </NavLink>
       </Box>
       <Grid container spacing={sectionSpacing}>
         <Grid item xs={12} sm={12} md={4}>
           <TextField
-            label='Search user'
+            label="Search user"
             fullWidth
             value={filterUser}
             onChange={(e) => handleUserFilter(e.target.value)}
@@ -66,7 +68,7 @@ export default function Users() {
             columns={userColumns}
             onEdit={(id) => console.log(`Edit item ${id}`)}
             onDelete={(id) => console.log(`Delete item ${id}`)}
-            route='user'
+            route="user"
           />
         </Grid>
       </Grid>

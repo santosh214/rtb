@@ -3,13 +3,15 @@
     {
       "id": "3a79a00b-3464-4c4b-9bf8-f9f0c1c34c35",
       "name": "ajay rawat",
-      "email": "ajayrawat@gmail.com"
+      "email": "ajayrawat@gmail.com",
+      "password":"12345678"
     },
     {
       "name": "santosh singh",
       "email": "santosh.singh@impetus.com",
       "amount": "10",
-      "id": "b03dac47-4171-4f70-852e-187cc0170757"
+      "id": "b03dac47-4171-4f70-852e-187cc0170757",
+      "role": "admin"
     },
     {
       "name": "sushant",

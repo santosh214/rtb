@@ -5,6 +5,8 @@ export interface User {
     name: string;
     age: number;
     mailId: string,
+    role?:string
+    password?:string
 }
 export interface UserType {
     users: User[]

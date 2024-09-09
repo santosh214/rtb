@@ -4,6 +4,8 @@ import { ApiError } from '../../../utils/utlis';
 
 
 interface User {
+  role: string;
+  password: string;
   id: number;
   name: string;
   email: string;
