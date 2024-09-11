@@ -11,6 +11,7 @@ import { itemsColumns } from './utils/constant';
 import { NavLink } from 'react-router-dom';
 import { sectionSpacing, shadowPadding } from '../../../utils/constant';
 import UIButton from '../../../components/UIElements/Button';
+import { getAdmin } from '../../../utils/utlis';
 
 interface MasterListProps {
   masterList: Item[];
@@ -19,9 +20,7 @@ interface MasterListProps {
   deleteItem: (index: ItemIndex) => void;
 }
 
-const MasterList: React.FC<MasterListProps> = ({
-  masterList,
-}) => {
+const MasterList: React.FC<MasterListProps> = ({ masterList }) => {
   const [searchTerm, setSearchTerm] = useState(''); // State to hold the search term
   const [filteredItems, setFilteredItems] = useState<Item[]>(masterList); // State for filtered list
 
@@ -31,21 +30,26 @@ const MasterList: React.FC<MasterListProps> = ({
       setFilteredItems(masterList); // Reset to original list if search is empty
     } else {
       setFilteredItems(
-        masterList.filter((item) =>
-          item.name.toLowerCase().includes(searchTerm.toLowerCase()) // Adjust filtering logic as needed
-        )
+        masterList.filter(
+          (item) => item.name.toLowerCase().includes(searchTerm.toLowerCase()), // Adjust filtering logic as needed
+        ),
       );
     }
   }, [searchTerm, masterList]); // Trigger effect when searchTerm or masterList changes
 
   return (
-    <Box sx={{...shadowPadding}}>
+    <Box sx={{ ...shadowPadding }}>
       <Typography fontWeight={600} variant="h5">
         All Items
       </Typography>
 
-      <Box display={'flex'} justifyContent={'space-between'} mb={sectionSpacing} pt={2}>
-      <Grid item xs={12} sm={12} md={4 } >
+      <Box
+        display={'flex'}
+        justifyContent={'space-between'}
+        mb={sectionSpacing}
+        pt={2}
+      >
+        <Grid item xs={12} sm={12} md={4}>
           <TextField
             label="Search Items" // Input label
             variant="outlined"
@@ -54,17 +58,29 @@ const MasterList: React.FC<MasterListProps> = ({
             onChange={(e) => setSearchTerm(e.target.value)} // Update search term
           />
         </Grid>
-        <Grid item xs={12} sm={12} md={4} sx={{display:'flex',justifyContent:{md:'end'},alignItems:'center'}}>
-        <NavLink to={'/dashboard/items/add'}>
-          <UIButton variant="contained">Add Item</UIButton>
-        </NavLink>
-        </Grid>
-
-      </Box> 
+        {getAdmin() ? (
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={4}
+            sx={{
+              display: 'flex',
+              justifyContent: { md: 'end' },
+              alignItems: 'center',
+            }}
+          >
+            <NavLink to={'/dashboard/items/add'}>
+              <UIButton variant="contained">Add Item</UIButton>
+            </NavLink>
+          </Grid>
+        ) : (
+          <></>
+        )}
+      </Box>
 
       {/* Search Box */}
       <Grid container spacing={sectionSpacing}>
-       
         <Grid item xs={12}>
           {/* Use the filteredItems in the table */}
           <UITable

@@ -4,10 +4,7 @@ import { Typography } from '@mui/material';
 const AdminHome: React.FC = () => {
   return (
     <div>
-      <Typography variant="h4">Welcome to the Home Page</Typography>
-      <Typography paragraph>
-        This is where your main content for the home page would go.
-      </Typography>
+      <Typography variant="h4">Welcome to the Admin Dashboard</Typography>
     </div>
   );
 };

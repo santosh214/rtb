@@ -7,7 +7,7 @@ export const elementSpacing = { xs: 0.5, sm: 1, md: 1, lg: 2, xl: 3 };
 export const boxShadow = { boxShadow: 3 };
 export const shadowPadding = { padding: 1, boxShadow: boxShadow.boxShadow, borderRadius: 1 };
 export const formWidth = 600;
-export const MenuList = [
+export const AdminMenuList = [
   {
     id: '122',
     name: 'Home',
@@ -28,6 +28,24 @@ export const MenuList = [
     name: 'Transaction',
     route: '/dashboard/transactions',
   },
+];
+export const UserMenuList = [
+  {
+    id: 'bj21jbjb-2hvhv2-2',
+    name: 'Home',
+    route: '/',
+  },
+  {
+    id: '72872-dss-s-ss',
+    name: 'Profile',
+    route: '/profile',
+  },
+  {
+    id: '8827-sss-s13',
+    name: 'Transactions',
+    route: '/transactions',
+  },
+ 
 ];
 
 export const dummyData: DataRow[] = [

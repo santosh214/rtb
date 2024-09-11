@@ -1,24 +1,17 @@
 import { useCallback, useState, useEffect } from 'react';
 import { UITable } from '../../../components/UIElements/Table';
-import {  sectionSpacing, shadowPadding } from '../../../utils/constant';
+import { sectionSpacing, shadowPadding } from '../../../utils/constant';
 import { Box, Button, Grid, TextField } from '@mui/material';
 import { NavLink } from 'react-router-dom';
-import { userColumns } from './utils';
+import { userColumns, UserInterface } from './utils';
 import { toast } from 'react-toastify';
 import { api } from './api';
 import UIButton from '../../../components/UIElements/Button';
 
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  password?: string;
-  role?: string;
-}
 
 export default function Users() {
   const [filterUser, setFilterUser] = useState('');
-  const [users, setUsers] = useState<User[]>();
+  const [users, setUsers] = useState<UserInterface[]>();
 
   useEffect(() => {
     getAllUsers();
@@ -47,7 +40,7 @@ export default function Users() {
   };
 
   return (
-    <Box sx={{...shadowPadding}} >
+    <Box sx={{ ...shadowPadding }}>
       <Box display={'flex'} justifyContent={'end'} mb={sectionSpacing}>
         <NavLink to={'/dashboard/users/add'}>
           <UIButton variant="contained">Add User</UIButton>
@@ -62,7 +55,7 @@ export default function Users() {
             onChange={(e) => handleUserFilter(e.target.value)}
           />
         </Grid>
-        <Grid item xs={12} >
+        <Grid item xs={12}>
           <UITable
             data={filteredData() || []} // Ensure data is not undefined
             columns={userColumns}

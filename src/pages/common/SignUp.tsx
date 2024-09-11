@@ -5,16 +5,19 @@ import { boxShadow, elementSpacing, formWidth } from '../../utils/constant';
 import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 import { api } from '../Admin/users/api';
-import { UserInputs } from '../Admin/users/AddUser';
+import { useNavigate } from 'react-router-dom';
+import { getAdmin } from '../../utils/utlis';
+import { UserInterface } from '../Admin/users/utils';
 
 const SignUp: React.FC = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<UserInputs>();
+  } = useForm<UserInterface>();
+  const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<UserInputs> = async (data) => {
+  const onSubmit: SubmitHandler<UserInterface> = async (data) => {
     // onSignUp(data); // Pass data to parent component
     try {
       // localStorage.setItem('email', data.email)
@@ -24,7 +27,12 @@ const SignUp: React.FC = () => {
         const addUser = await api.addUser(data);
         console.log('Add User', addUser);
         toast.success('Registration successfully done');
-        // navigate('/dashboard/users');
+        if(getAdmin()){
+          navigate('/dashboard');
+        }
+        else{
+          navigate('/');
+        }
       } catch (error) {
         console.log('Error', error);
       }

@@ -22,6 +22,7 @@ import { UITable } from '../../../components/UIElements/Table';
 import { itemsColumns } from './utils/constant';
 import UIButton from '../../../components/UIElements/Button';
 import { sectionSpacing, shadowPadding } from '../../../utils/constant';
+import { getAdmin } from '../../../utils/utlis';
 
 interface ItemsOfTheDayProps {
   masterList: Item[];
@@ -72,33 +73,37 @@ const ItemsOfTheDay: React.FC<ItemsOfTheDayProps> = ({ masterList }) => {
         Items Of The Day
       </Typography>
 
-      <Grid container spacing={2} pt={2} pb={3}>
-        <Grid item xs={12} sm={3} md={4}>
-          <Select
-            fullWidth
-            value={selectedItem}
-            onChange={(e) => setSelectedItem(e.target.value as string)}
-          >
-            {masterList.map((item, index) => (
-              <MenuItem key={index} value={item.name}>
-                {item.name}
-              </MenuItem>
-            ))}
-          </Select>
+      {getAdmin() ? (
+        <Grid container spacing={2} pt={2} pb={3}>
+          <Grid item xs={12} sm={3} md={4}>
+            <Select
+              fullWidth
+              value={selectedItem}
+              onChange={(e) => setSelectedItem(e.target.value as string)}
+            >
+              {masterList.map((item, index) => (
+                <MenuItem key={index} value={item.name}>
+                  {item.name}
+                </MenuItem>
+              ))}
+            </Select>
+          </Grid>
+          <Grid item xs={12} sm={3} md={4}>
+            <TextField
+              fullWidth
+              label="Quantity"
+              type="number"
+              value={quantity}
+              onChange={(e) => setQuantity(Number(e.target.value))}
+            />
+          </Grid>
+          <Grid item xs={12} sm={3} alignItems={'center'} display={'flex'}>
+            <UIButton onClick={handleAddItemOfTheDay}>Add Item</UIButton>
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={3} md={4}>
-          <TextField
-            fullWidth
-            label="Quantity"
-            type="number"
-            value={quantity}
-            onChange={(e) => setQuantity(Number(e.target.value))}
-          />
-        </Grid>
-        <Grid item xs={12} sm={3} alignItems={'center'} display={'flex'}>
-          <UIButton onClick={handleAddItemOfTheDay}>Add Item</UIButton>
-        </Grid>
-      </Grid>
+      ) : (
+        <></>
+      )}
 
       <Grid container spacing={sectionSpacing}>
         <Grid item xs={12}>

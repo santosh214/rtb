@@ -13,3 +13,15 @@ export const getAdmin = () => {
   console.log('a', isAdmin);
   return isAdmin ? true : false;
 };
+
+export const getUser = () => {
+  const storedUser = localStorage.getItem('user');
+  console.log("stroe",storedUser)
+  const user = storedUser ? JSON.parse(storedUser) : null;
+  return user ? true : false;
+};
+export const getUserData=()=>{
+  const storedUser = localStorage.getItem('user');
+  const user = storedUser? JSON.parse(storedUser) : null;
+  return user;
+}

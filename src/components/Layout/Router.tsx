@@ -10,12 +10,16 @@ import AddItem from '../../pages/Admin/Items/AddItems';
 import UpdateItems from '../../pages/Admin/Items/UpdateItems';
 import SignUp from '../../pages/common/SignUp';
 import UnAuthorized from '../../pages/common/UnAuthorized';
-import { getAdmin } from '../../utils/utlis';
+import { getAdmin, getUser } from '../../utils/utlis';
+import Profile from '../../pages/Employee/Profile';
 
 const PrivateRoutes = () => {
   return getAdmin() ? <Outlet /> : <Navigate to="/unauthorized" />;
 };
 
+const PublicRoutes = () => {
+  return getUser() ? <Outlet /> : <Navigate to="/unauthorized" />;
+};
 export default function Router() {
   return (
     <Routes>
@@ -34,10 +38,15 @@ export default function Router() {
         <Route path="/dashboard/users" element={<Users />} />
       </Route>
       {/* Public Routes */}
-      <Route path="/" element={<AdminItem employee={true} />} />
+      <Route element={<PublicRoutes />}>
+        <Route path="/" element={<AdminItem employee={true} />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/transactions" element={<Transactions />} />
+      </Route>
+      <Route path="/auth/signup" element={<SignUp />} />
       <Route path="/auth/login" element={<Login />} />
-      <Route path="/auth/register" element={<SignUp />} />
       <Route path="/unauthorized" element={<UnAuthorized />} />{' '}
+      <Route path="*" element={<h1>Page Not Found</h1>} />
       {/* Add Unauthorized page route */}
     </Routes>
   );

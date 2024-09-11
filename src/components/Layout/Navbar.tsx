@@ -7,24 +7,26 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import UIButton from '../UIElements/Button';
+import { getUser } from '../../utils/utlis';
+import { useNavigate } from 'react-router-dom';
 
-const pages = [''];
 const settings = [''];
 
 function Navbar() {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  const navigate = useNavigate();
+  const pages = getUser() ? ['logout'] : ['login', 'signup'];
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+    null,
+  );
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
+    null,
+  );
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
@@ -34,10 +36,19 @@ function Navbar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const handleNavbarClick = (route: string) => {
+    console.log(route);
+    if (route === 'logout') {
+      localStorage.removeItem('user');
+      window.location.href = 'auth/login'
+    } else {
+      navigate(`auth/${route}`);
+    }
+  };
 
   return (
     <AppBar position="static">
-      <Container maxWidth={false}  >
+      <Container maxWidth={false}>
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -112,12 +123,17 @@ function Navbar() {
           >
             LOGO
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: 'none', md: 'flex', justifyContent: 'end' },
+            }}
+          >
             {pages.map((page) => (
               <UIButton
-              variant='text'
+                variant="text"
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => handleNavbarClick(page)}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}

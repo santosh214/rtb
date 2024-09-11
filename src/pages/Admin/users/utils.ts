@@ -7,3 +7,13 @@ export const userColumns: Column[] = [
     { id: 'amount', label: 'Amount' }
 ];
 
+
+export type UserInterface = {
+    id: string;
+    name: string;
+    employeeId?: string;
+    email: string;
+    amount: string;
+    password: string;
+    role: string;
+  };

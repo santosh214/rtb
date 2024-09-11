@@ -1,38 +1,26 @@
 {
   "users": [
     {
-      "id": "3a79a00b-3464-4c4b-9bf8-f9f0c1c34c35",
-      "name": "ajay rawat",
-      "email": "ajayrawat@gmail.com",
-      "password": "12345678"
-    },
-    {
+      "id": "7925c070-d207-46d5-be2e-88fb4bdde460",
       "name": "santosh singh",
-      "email": "santosh.singh@impetus.com",
+      "email": "c@c.com",
       "amount": "10",
-      "id": "b03dac47-4171-4f70-852e-187cc0170757",
-      "role": "admin",
-      "password": "12345678"
+      "password": "Patanahi@123",
+      "role": "admin"
     },
     {
-      "name": "sushant",
-      "email": "sushant@gmail.com",
-      "amount": "120",
-      "id": "bed099f9-f1f1-4b6f-994e-735be041e97a"
+      "name": "pawan",
+      "email": "pawan@gmail.com",
+      "amount": "400",
+      "password": "patanahi@123",
+      "id": "e0384a2a-789b-4604-9f18-0f2bdd241ea1"
     },
     {
-      "id": "1c4896d8-e7f2-449c-a274-d3be715426f7",
-      "employeeId": "12345",
-      "name": "nayan",
-      "email": "nayan@gmail.com",
-      "position": "",
-      "password": "nayan"
-    },
-    {
-      "id": "af3f846b-0c30-48e1-b542-3c5b6962a442",
-      "name": "sushi",
-      "email": "sushi@gmail.com",
-      "amount": "123"
+      "name": "karan",
+      "email": "karan@gmail.com",
+      "amount": "150",
+      "password": "12345678",
+      "id": "c6c1133b-204f-4a64-9d20-a8b67374d554"
     }
   ],
   "items": [

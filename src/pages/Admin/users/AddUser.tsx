@@ -10,16 +10,9 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 import UIButton from '../../../components/UIElements/Button';
+import { UserInterface } from './utils';
 
-export type UserInputs = {
-  employeeId?: string;
-  name: string;
-  email: string;
-  id: string;
-  amount: number;
-  password: string;
-  role: string;
-};
+
 
 export default function AddUser() {
   const navigate = useNavigate();
@@ -28,8 +21,8 @@ export default function AddUser() {
     handleSubmit,
     // watch,
     formState: { errors },
-  } = useForm<UserInputs>();
-  const onSubmit: SubmitHandler<UserInputs> = async (data) => {
+  } = useForm<UserInterface>();
+  const onSubmit: SubmitHandler<UserInterface> = async (data) => {
     console.log('dddd', data);
     // localStorage.setItem('email', data.email)
     data.id = uuidv4();
@@ -64,6 +57,15 @@ export default function AddUser() {
               {...register('email', { required: 'Email is required' })}
               error={!!errors.email}
               helperText={errors.email ? errors.email.message : ''}
+              fullWidth
+              margin="normal"
+            />
+             <TextField
+              label="Password"
+              type="password"
+              {...register('password', { required: 'Password is required' })}
+              error={!!errors.password}
+              helperText={errors.password? errors.password.message : ''}
               fullWidth
               margin="normal"
             />

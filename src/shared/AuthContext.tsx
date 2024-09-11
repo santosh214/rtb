@@ -1,17 +1,11 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { UserInterface } from '../pages/Admin/users/utils';
 
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  role?:string
-  password?:string;
-  // Add other user properties as needed
-}
+
 
 interface AuthContextType {
-  user: User | null;
-  login: (userData: User) => void;
+  user: UserInterface | null;
+  login: (userData: UserInterface) => void;
   logout: () => void;
 }
 
@@ -22,9 +16,9 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<UserInterface | null>(null);
 
-  const login = (userData: User) => {
+  const login = (userData: UserInterface) => {
     // Implement login logic here (e.g., API call)
     setUser(userData);
   };

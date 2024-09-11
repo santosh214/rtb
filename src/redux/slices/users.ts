@@ -1,38 +1,35 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
+import { UserInterface } from '../../pages/Admin/users/utils';
 
-export interface User {
-    id: number | string;
-    name: string;
-    age: number;
-    mailId: string,
-    role?:string
-    password?:string
-}
+
 export interface UserType {
-    users: User[]
+  users: UserInterface[];
 }
 const initialState: UserType = {
-    users: [{
-        id: '1',
-        name: 'Santosh',
-        age: 27,
-        mailId: 'santosh.k.singh@impetus.com'
-
-    }]
-}
+  users: [
+    {
+      id: '1',
+      name: 'Santosh',
+      email: 'santosh.k.singh@impetus.com',
+      amount:'0',
+      password:'password',
+      role:'admin'
+    },
+  ],
+};
 export const UserSlice = createSlice({
-    name: 'users',
-    initialState,
-    reducers: {
-        addUser: (state, action) => {
-            const newUser = {
-                id: '11',
-                ...action.payload
-            }
-            state.users = [...state.users, newUser]
-        }
-    }
-})
+  name: 'users',
+  initialState,
+  reducers: {
+    addUser: (state, action) => {
+      const newUser = {
+        id: '11',
+        ...action.payload,
+      };
+      state.users = [...state.users, newUser];
+    },
+  },
+});
 
-export const { addUser } = UserSlice.actions
-export default UserSlice.reducer
+export const { addUser } = UserSlice.actions;
+export default UserSlice.reducer;

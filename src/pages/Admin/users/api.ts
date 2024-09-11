@@ -1,21 +1,14 @@
 import { ParamsModel } from '../../../shared/api-models';
 import { apiClient } from '../../../utils/api-client';
 import { ApiError } from '../../../utils/utlis';
+import { UserInterface } from './utils';
 
 
-interface User {
-  role: string;
-  password: string;
-  id: number;
-  name: string;
-  email: string;
-  amount: string;
-}
 
 export const api = {
-  getUsers: async (params?: ParamsModel): Promise<User[]> => {
+  getUsers: async (params?: ParamsModel): Promise<UserInterface[]> => {
     try {
-      const response = await apiClient.get<User[]>(`users`,params);
+      const response = await apiClient.get<UserInterface[]>(`users`,params);
       return response; // Return the response directly
     } catch (err: any) {
       console.error('🚀 ~ getUsers: ~ err:', err);

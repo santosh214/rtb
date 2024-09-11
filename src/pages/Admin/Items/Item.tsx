@@ -48,11 +48,10 @@ const Items: React.FC<ItemsDTO> = ({ employee }: ItemsDTO) => {
     <>
       <Grid container spacing={3}>
         <Grid item xs={6}>
-         
           <ItemsOfTheDay masterList={masterList} />
         </Grid>
         <Grid item xs={6}>
-        <MasterList
+          <MasterList
             masterList={masterList}
             addItem={addItem}
             updateItem={updateItem}
