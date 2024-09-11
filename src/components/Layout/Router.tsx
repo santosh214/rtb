@@ -1,7 +1,6 @@
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import AdminHome from '../../pages/Admin/AdminHome';
 import Users from '../../pages/Admin/users/Users';
-import Transactions from '../../pages/Admin/Transaction/Transactions';
 import AddUser from '../../pages/Admin/users/AddUser';
 import Login from '../../pages/common/Login';
 import UpdateUser from '../../pages/Admin/users/UpdateUser';
@@ -12,6 +11,7 @@ import SignUp from '../../pages/common/SignUp';
 import UnAuthorized from '../../pages/common/UnAuthorized';
 import { getAdmin, getUser } from '../../utils/utlis';
 import Profile from '../../pages/Employee/Profile';
+import Transactions from '../../pages/Admin/Transaction/Transactions';
 
 const PrivateRoutes = () => {
   return getAdmin() ? <Outlet /> : <Navigate to="/unauthorized" />;
