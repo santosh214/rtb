@@ -40,7 +40,7 @@ function Navbar() {
     console.log(route);
     if (route === 'logout') {
       localStorage.removeItem('user');
-      window.location.href = 'auth/login'
+      window.location.href = '/auth/login'
     } else {
       navigate(`auth/${route}`);
     }

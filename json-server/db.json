@@ -25,14 +25,16 @@
   ],
   "items": [
     {
-      "id": "12345",
       "name": "laptop",
-      "price": "1000"
+      "quantity": "12",
+      "price": "1000",
+      "id": "12345"
     },
     {
-      "id": "67890",
       "name": "mobile",
-      "price": "500"
+      "quantity": "12",
+      "price": "400",
+      "id": "67890"
     },
     {
       "name": "Sandwich",
@@ -101,6 +103,57 @@
       "name": "Banana",
       "quantity": 300,
       "price": "3"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "d3044bf1-8fc4-4d26-9797-a92b9179e359",
+      "user_id": "e0384a2a-789b-4604-9f18-0f2bdd241ea1",
+      "price": "3",
+      "date": "2024-09-11T21:26:07.287Z",
+      "item_name": "Banana"
+    },
+    {
+      "id": "d3044bf1-8fc4-4d26-9797-a92b9179e359",
+      "user_id": "e0384a2a-789b-4604-9f18-0f2bdd241ea1",
+      "price": "3",
+      "date": "2024-09-11T21:26:29.636Z",
+      "item_name": "Banana"
+    },
+    {
+      "id": "d3044bf1-8fc4-4d26-9797-a92b9179e359",
+      "user_id": "e0384a2a-789b-4604-9f18-0f2bdd241ea1",
+      "price": "3",
+      "date": "2024-09-11T21:27:13.872Z",
+      "item_name": "Banana"
+    },
+    {
+      "id": "d3044bf1-8fc4-4d26-9797-a92b9179e359",
+      "user_id": "e0384a2a-789b-4604-9f18-0f2bdd241ea1",
+      "price": "3",
+      "date": "2024-09-11T21:35:50.220Z",
+      "item_name": "Banana"
+    },
+    {
+      "id": "ac98362a-0f6d-47f4-8e07-205c5784c67e",
+      "user_id": "e0384a2a-789b-4604-9f18-0f2bdd241ea1",
+      "price": "30",
+      "date": "2024-09-11T21:37:14.958Z",
+      "item_name": "Sandwich"
+    },
+    {
+      "id": "67890",
+      "user_id": "c6c1133b-204f-4a64-9d20-a8b67374d554",
+      "price": "500",
+      "date": "2024-09-11T21:41:28.179Z",
+      "item_name": "mobile"
+    },
+    {
+      "id": "d4d9986c-0198-41f2-85eb-34343dd30679",
+      "user_id": "e0384a2a-789b-4604-9f18-0f2bdd241ea1",
+      "price": "12",
+      "date": "2024-09-11T21:53:31.879Z",
+      "item_name": "grapes"
     }
   ]
 }
